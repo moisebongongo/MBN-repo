@@ -1,0 +1,23 @@
+import boto3
+
+def create_s3_bucket(bucket_name):
+    """Creates an S3 bucket with the specified name.
+
+    Args:
+        bucket_name (str): The name of the bucket to create.
+
+    Returns:
+        None
+    """
+
+    s3 = boto3.client('s3')
+
+    try:
+        s3.create_bucket(Bucket=bucket_name)
+        print(f"Bucket '{bucket_name}' created successfully!")
+    except Exception as e:
+        print(f"Error creating bucket: {e}")
+
+if __name__ == "__main__":
+    bucket_name = "your-bucket-name"  # Replace with your desired bucket name
+    create_s3_bucket(bucket_name)
